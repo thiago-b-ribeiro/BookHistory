@@ -27,13 +27,14 @@ class cBookHistory{
         cBookHistory();
         ~cBookHistory();
         std::vector<stBook> SearchBook(std::string & oTitle);
+        int CreateMenu(std::vector<std::string> & oOptions);
 
-        cMessageTraffic * oMessageTraffic = new cMessageTraffic();
+        cMessageTraffic * oMessageTraffic;
 
     protected:
     private:
         rapidjson::Document oJsonResponse;
-        std::vector<stBook> oVectorBook;
+        std::vector<stBook> oVectorBooks;
         std::string oResponse;
         stBook STBook;
 };

@@ -8,10 +8,17 @@
 #include <iostream>
 #include <algorithm>
 
-cBookHistory::cBookHistory(){};
-cBookHistory::~cBookHistory(){};
+cBookHistory::cBookHistory()
+  :oMessageTraffic(new cMessageTraffic()){
+
+}
+
+cBookHistory::~cBookHistory(){
+
+}
 
 std::vector<stBook> cBookHistory::SearchBook(std::string & oTitle){
+    
     std::replace(oTitle.begin(), oTitle.end(), ' ', '+');
     std::string oUrl = ENDPOINT + oTitle + "&" + APIKEY;
 
@@ -35,8 +42,32 @@ std::vector<stBook> cBookHistory::SearchBook(std::string & oTitle){
         STBook.pageCount = (*itr)["volumeInfo"]["pageCount"].GetInt();
       }
 
-      oVectorBook.push_back(STBook);
+      oVectorBooks.push_back(STBook);
     }
 
-    return(oVectorBook);
+    return(oVectorBooks);
+}
+
+int cBookHistory::CreateMenu(std::vector<std::string> & oOptions){
+  
+  int iOptionNumber = 0;
+  int iChoice = 0;
+
+  for(std::vector<std::string>::iterator itr = oOptions.begin(); itr != oOptions.end(); ++itr){
+    std::cout << "   " << iOptionNumber + 1 << " - " << *itr << std::endl;
+    ++iOptionNumber;
+  }
+
+  while(true){
+    std::cout << "\nDigite a opcao desejada: ";
+    std::cin >> iChoice;
+
+    if(iChoice >= 1 && iChoice <= iOptionNumber){
+      break;
+    } else{
+      std::cout << "Escolha um numero entre 1 e " << iOptionNumber << "." << std::endl;
+    }
+  }
+
+  return(iChoice);
 }

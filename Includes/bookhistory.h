@@ -4,11 +4,16 @@
  * @copyright All rights reserved to the author.
 */
 
+#include "rapidjson/document.h"
+#include "../Includes/messageTraffic.h"
 #include <string>
 #include <vector>
 
 #ifndef BOOKHISTORY_H
 #define BOOKHISTORY_H
+
+#define ENDPOINT "https://www.googleapis.com/books/v1/volumes?q="
+#define APIKEY "key=AIzaSyBPvMXUMZXVMKq8HdQjkx8Te7wTQJCLBFs"
 
 struct stBook{
     std::string id;
@@ -21,8 +26,16 @@ class cBookHistory{
     public:
         cBookHistory();
         ~cBookHistory();
+        std::vector<stBook> SearchBook(std::string & oTitle);
+
+        cMessageTraffic * oMessageTraffic = new cMessageTraffic();
+
     protected:
     private:
+        rapidjson::Document oJsonResponse;
+        std::vector<stBook> oVectorBook;
+        std::string oResponse;
+        stBook STBook;
 };
 
 #endif

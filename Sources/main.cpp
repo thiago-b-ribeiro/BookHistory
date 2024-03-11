@@ -1,9 +1,12 @@
 #include "bookhistory.h"
 #include "messageTraffic.h"
+#include "ASCIIArt.h"
 #include <iostream>
 #include <curl/curl.h>
 
 int main(int argc, char *argv[]){
+
+  cASCIIArt::ShowAsciiArt();
 
   std::string oTitleBook = "O Mundo de Sofia";
 

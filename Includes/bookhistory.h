@@ -5,7 +5,7 @@
 */
 
 #include "rapidjson/document.h"
-#include "../Includes/messageTraffic.h"
+#include "messageTraffic.h"
 #include <string>
 #include <vector>
 
@@ -27,7 +27,7 @@ class cBookHistory{
         cBookHistory();
         ~cBookHistory();
         std::vector<stBook> SearchBook(std::string & oTitle);
-        int CreateMenu(std::vector<std::string> & oOptions);
+        const std::vector<std::string> GetMainMenu();
 
         cMessageTraffic * oMessageTraffic;
 
@@ -35,6 +35,7 @@ class cBookHistory{
     private:
         rapidjson::Document oJsonResponse;
         std::vector<stBook> oVectorBooks;
+        std::vector<std::string> oMainMenu = {"Consultar Livro", "Inserir Livro Lido"};
         std::string oResponse;
         stBook STBook;
 };

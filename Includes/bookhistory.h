@@ -28,6 +28,7 @@ class cBookHistory{
         ~cBookHistory();
         std::vector<stBook> SearchBook(std::string & oTitle);
         const std::vector<std::string> GetMainMenu();
+        std::string oTitleBook;
 
         cMessageTraffic * oMessageTraffic;
 

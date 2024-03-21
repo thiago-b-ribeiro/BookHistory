@@ -4,7 +4,7 @@
  * @copyright All rights reserved to the author.
 */
 
-#include "../Includes/messageTraffic.h"
+#include "messageTraffic.h"
 
 cMessageTraffic::cMessageTraffic(){}
 
@@ -26,7 +26,7 @@ void cMessageTraffic::MethodGET(std::string & oUrl){
     curl_easy_setopt(curl, CURLOPT_URL, oUrl.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &m_oResponse);
-
+    
     m_ReturnCode = curl_easy_perform(curl);
 
     curl_easy_cleanup(curl);

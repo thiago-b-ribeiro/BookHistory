@@ -36,7 +36,7 @@ class cBookHistory{
     private:
         rapidjson::Document oJsonResponse;
         std::vector<stBook> oVectorBooks;
-        std::vector<std::string> oMainMenu = {"Consultar Livro", "Inserir Livro Lido"};
+        std::vector<std::string> oMainMenu = {"Consultar Livro", "Livros lidos"};
         std::string oResponse;
         stBook STBook;
 };

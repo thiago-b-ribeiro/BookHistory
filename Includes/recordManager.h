@@ -9,15 +9,18 @@
 
 #include "bookhistory.h"
 #include <fstream>
+#include <vector>
 
 class cRecordManager{
     public:
         cRecordManager();
         ~cRecordManager();
         void InsertRecord(stBook & stBook);
+        std::vector<stBook> ListRecords();
 
     private:
         std::ofstream oDestiny;
+        std::ifstream oOrigin;
 
 };
 

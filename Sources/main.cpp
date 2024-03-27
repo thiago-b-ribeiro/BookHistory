@@ -8,9 +8,10 @@
 
 int main(int argc, char *argv[]){
 
-  cBookHistory * oBookHistory = new cBookHistory();  
-  cMenu * oMenu = new cMenu();
-  std::vector<stBook> oVectorBooks;
+  cBookHistory   * oBookHistory   = new cBookHistory();  
+  cRecordManager * oRecordManager = new cRecordManager();
+  cMenu          * oMenu          = new cMenu();
+  std::vector<stBook>      oVectorBooks;
   std::vector<std::string> oOptionsMenu;
 
   cASCIIArt::ShowAsciiArt();
@@ -25,15 +26,30 @@ int main(int argc, char *argv[]){
       oVectorBooks = oBookHistory->SearchBook(oBookHistory->oTitleBook);
 
       for(std::vector<stBook>::iterator itr = oVectorBooks.begin(); itr != oVectorBooks.end(); ++itr){
-        oOptionsMenu.push_back((*itr).title);
+        oOptionsMenu.push_back((*itr).id);
       }
 
       std::cout << "\nO resultado da pesquisa eh: \n" << std::endl;
       iChoice = oMenu->CreateMenu(oOptionsMenu);
-      std::cout << "A opcao escolhida foi: " << oVectorBooks[iChoice - 1].title << std::endl;
 
-      cRecordManager * oRecordManager = new cRecordManager();
       oRecordManager->InsertRecord(oVectorBooks[iChoice - 1]);
+
+      break;
+
+    case 2:
+      std::vector<stBook> oListRecords = oRecordManager->ListRecords();
+      
+      if(oListRecords.size() > 0){
+        std::cout << "A quantidade de livros lidos eh: " << oListRecords.size() << std::endl;
+        std::cout << "Os livros lidos foram: " << std::endl;
+
+        for(std::vector<stBook>::iterator itr = oListRecords.begin(); itr != oListRecords.end(); ++itr){
+          std::cout << "     - " << itr->id << "     " << itr->title << "     " << itr->pageCount << std::endl;
+        }
+
+      }
+
+      break;
   }
 
 

@@ -13,4 +13,4 @@ desigualdade social.
 * **Thiago Barbosa Ribeiro** - *Desenvolvedor*
 
 ## 📄 Licença
-Este projeto está sob a licença (MIT License) - veja o arquivo [LICENSE.md](https://github.com/thiago-b-ribeiro/BookHistory/LICENSE.md) para detalhes.
+Este projeto está sob a licença (MIT License) - veja o arquivo [LICENSE.md](https://github.com/thiago-b-ribeiro/BookHistory/blob/main/LICENSE.md) para detalhes.

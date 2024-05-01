@@ -17,10 +17,12 @@ class cRecordManager{
         ~cRecordManager();
         void InsertRecord(stBook & stBook);
         std::vector<stBook> ListRecords();
+        void DeleteRecord(std::string lineToDelete);
 
     private:
         std::ofstream oDestiny;
         std::ifstream oOrigin;
+        std::ofstream oTemporaryFile;
 
 };
 

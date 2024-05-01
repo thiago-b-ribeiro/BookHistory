@@ -9,6 +9,19 @@ desigualdade social.
 
 ## 📌 Versão
 
+## Requisitos
+### Funcionais
+* <img src="./Images/checked01.png" width="17,5" height="17,5" align="center"> Opção para consultar livros por nome (parcial ou não)
+* <img src="./Images/checked01.png" width="17,5" height="17,5" align="center"> Opção para registrar livros lidos
+* <img src="./Images/checked01.png" width="17,5" height="17,5" align="center"> Opção para consultar relação de livros lidos
+* Opção para deletar registros de livros lidos
+* 
+
+### Não funcionais
+* Documentar o código
+* Implementar *makefile*
+* Desacoplar o código da recordManager.cpp (retirar o nome do arquivo do código e passar como parâmetro)
+
 ## ✒️ Autores
 * **Thiago Barbosa Ribeiro** - *Desenvolvedor*
 

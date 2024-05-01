@@ -46,3 +46,24 @@ std::vector<stBook> cRecordManager::ListRecords(){
 
     return(oList);
 }
+
+void cRecordManager::DeleteRecord(std::string lineToDelete){
+    oOrigin.open("BookRead.txt");
+    oTemporaryFile.open("BookRead.txt");
+    std::string oTemporaryLine;
+
+    if(!oOrigin.is_open()){
+
+        std::cout << "Nao foi possivel abrir o arquivo." << std::endl;
+
+    } else{
+        while(std::getline(oOrigin, oTemporaryLine)){
+            std::string id(oTemporaryLine.begin(), oTemporaryLine.begin() + oTemporaryLine.find(" "));
+            if (id != lineToDelete)
+            oTemporaryFile << oTemporaryLine << std::endl;
+        }
+    }
+
+    oOrigin.close();
+    oTemporaryFile.close();
+}

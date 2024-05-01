@@ -20,36 +20,49 @@ int main(int argc, char *argv[]){
 
   switch(iChoice){
     case 1:
-      std::cout << "Digite o titulo que deseja pesquisar: ";
-      std::getline(std::cin, oBookHistory->oTitleBook);
+      {
+        std::cout << "Digite o titulo que deseja pesquisar: ";
+        std::getline(std::cin, oBookHistory->oTitleBook);
 
-      oVectorBooks = oBookHistory->SearchBook(oBookHistory->oTitleBook);
+        oVectorBooks = oBookHistory->SearchBook(oBookHistory->oTitleBook);
 
-      for(std::vector<stBook>::iterator itr = oVectorBooks.begin(); itr != oVectorBooks.end(); ++itr){
-        oOptionsMenu.push_back((*itr).id);
-      }
-
-      std::cout << "\nO resultado da pesquisa eh: \n" << std::endl;
-      iChoice = oMenu->CreateMenu(oOptionsMenu);
-
-      oRecordManager->InsertRecord(oVectorBooks[iChoice - 1]);
-
-      break;
-
-    case 2:
-      std::vector<stBook> oListRecords = oRecordManager->ListRecords();
-      
-      if(oListRecords.size() > 0){
-        std::cout << "A quantidade de livros lidos eh: " << oListRecords.size() << std::endl;
-        std::cout << "Os livros lidos foram: " << std::endl;
-
-        for(std::vector<stBook>::iterator itr = oListRecords.begin(); itr != oListRecords.end(); ++itr){
-          std::cout << "     - " << itr->id << "     " << itr->title << "     " << itr->pageCount << std::endl;
+        for(std::vector<stBook>::iterator itr = oVectorBooks.begin(); itr != oVectorBooks.end(); ++itr){
+          oOptionsMenu.push_back((*itr).title);
         }
 
+        std::cout << "\nO resultado da pesquisa eh: \n" << std::endl;
+        iChoice = oMenu->CreateMenu(oOptionsMenu);
+
+        oRecordManager->InsertRecord(oVectorBooks[iChoice - 1]);
+
+        break;
       }
 
-      break;
+    case 2:
+      {
+        std::vector<stBook> oListRecords = oRecordManager->ListRecords();
+        
+        if(oListRecords.size() > 0){
+          std::cout << "A quantidade de livros lidos eh: " << oListRecords.size() << std::endl;
+          std::cout << "Os livros lidos foram: " << std::endl;
+
+          for(std::vector<stBook>::iterator itr = oListRecords.begin(); itr != oListRecords.end(); ++itr){
+            std::cout << "     - " << itr->id << "     " << itr->title << "     " << itr->pageCount << std::endl;
+          }
+        }
+
+        break;
+      }
+
+    case 3:
+      {
+        std::cout << "Digite o registro que deseja excluir: " << std::endl;
+        std::string oLineToDelete;
+        std::getline(std::cin, oLineToDelete);
+        oRecordManager->DeleteRecord(oLineToDelete);
+
+        break;
+      }
   }
 
 
